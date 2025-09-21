@@ -17,22 +17,13 @@ tot_time=0;
 for i = 1:1
     tic;
 
-    % <50-238
-    % cnffile = '/Users/ananyanandy/Documents/ECE_PhD/RESEARCH/FALL_24/DARPA/DARPA_Sets_Jan2024/batch-07/003_2_2.dimacs'; 
-
-    % 50-300
-    % cnffile = '/Users/ananyanandy/Documents/ECE_PhD/RESEARCH/FALL_24/DARPA/DARPA_Sets_Jan2024/batch-04/3block-like-rand-00051-0093.cnf';
-
-    % cnffile = '/Users/ananyanandy/Documents/ECE_PhD/RESEARCH/FALL_24/Instances_Test_Phase_1/tentative_batches/hardware/t_batch_4/73.cnf';
-
-    cnffile = '/Users/ananyanandy/Documents/ECE_PhD/RESEARCH/FALL_24/Instances_Test_Phase_1/tentative_batches/hardware/t_batch_4/54.dimacs';
+    cnffile = ''; %Input path to the cnf 
 
 
     cnffile_new = '';
     scheme =1;
     chip_size=50;
     digital_backup =0;
-    coeff_tts =6.43335e-08;
 
 
     [file,Clauses,var,nc]= k_sat_read_cnf(cnffile,cnffile_new,scheme);
@@ -44,12 +35,10 @@ for i = 1:1
         % No need for decomposition in this case
         [X_final_mcmc,time]= MCMC_SAT(CMat,var,nc);
 
-        tts = coeff_tts*time;
 
         fprintf("The SAT solution is : \n");
         disp(X_final_mcmc');
 
-        fprintf("TTS(meu_seconds) : %d\n",tts);
 
     elseif (var<=100)
 
@@ -60,12 +49,9 @@ for i = 1:1
         decomp_time = toc;
         [X_final,sat_time,flip_time,total_time]=chip_solver_large(2,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses);
 
-        tts = coeff_tts*sum(sat_time) + (sum(flip_time)+sum(sat_time))*1e6;
-
         fprintf("The SAT solution is : \n");
         disp(X_final');
 
-        fprintf("TTS(meu_seconds) : %d\n",tts);
 
     else
         tic;
@@ -82,23 +68,17 @@ for i = 1:1
 
             [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses);
 
-            tts = coeff_tts*sum(sat_time) + (sum(flip_time)+sum(sat_time))*1e6;
-
             fprintf("The SAT solution is : \n");
             disp(X_final');
 
-            fprintf("TTS(meu_seconds) : %d\n",tts);
 
         else
 
             [X_final,sat_time,flip_time,total_time]=chip_solver_large(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses);
 
-            tts = coeff_tts*sum(sat_time) + (sum(flip_time)+sum(sat_time))*1e6;
-
             fprintf("The SAT solution is : \n");
             disp(X_final');
 
-            fprintf("TTS(meu_seconds) : %d\n",tts);
 
         end
     end
