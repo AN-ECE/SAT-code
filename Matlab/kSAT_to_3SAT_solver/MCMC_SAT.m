@@ -32,7 +32,7 @@
 function [X,time_to_sat] = MCMC_SAT(CMat,var,nc)
 
 N=var;
-K=10^4;
+K=10^6;
 VC=1;
 small_eps=0.00;
 
