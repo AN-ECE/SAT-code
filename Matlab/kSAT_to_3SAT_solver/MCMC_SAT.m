@@ -29,7 +29,7 @@
 % time_to_sat - Time to reach SAT solution
 
 
-function [X,time_to_sat] = MCMC_SAT(CMat,var,nc,K)
+function [X,time_to_sat,i] = MCMC_SAT(CMat,var,nc,K)
 
 N=var;
 VC=1;
