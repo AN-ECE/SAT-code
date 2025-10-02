@@ -66,7 +66,7 @@ for i = 1:1
         % Set to 1 if we need to run Solver Algorithm after some iterations 
         if digital_backup ==1
 
-            [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses);
+            [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses,cnffile);
 
             fprintf("The SAT solution is : \n");
             disp(X_final');
