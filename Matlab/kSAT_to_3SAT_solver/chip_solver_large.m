@@ -83,6 +83,11 @@ while(vtmpb~=0)
         time(p)=TvalV(end);
     end
 
+    if iter~=parts
+        disp("STOP! Increase iterations for MCMC small solver");
+        break;
+    end
+
     for k=1:parts
         X_final(map{k}(:,1))=X_sat{k};
     end
