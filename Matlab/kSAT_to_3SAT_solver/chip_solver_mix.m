@@ -20,7 +20,7 @@
 % the larger problem
 
 
-function [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(parts,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses)
+function [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(parts,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses,cnffile)
 
 
 time_to_sat=0;
