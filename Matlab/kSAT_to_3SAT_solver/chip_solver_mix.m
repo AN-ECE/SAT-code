@@ -76,16 +76,24 @@ unsatis_arr=[0,0,0,0,0,0,0,0,0];
 flip_node_arr=cell(1,10);
 X_arr={};
 
+iter =0;
+
 % Simulating for K jumps
 while(vtmpb~=0)
 
     X_sat=cell(1,parts);
     parfor p =1:parts
 
-        [X,TvalV] = MCMC_small_solver(S,K,VC,small_eps,X_final,node_set,Clause_set,p);
+        [X,TvalV,it] = MCMC_small_solver(S,K,VC,small_eps,X_final,node_set,Clause_set,p);
+        iter = iter+it;
 
         X_sat{p} = X;
         time(p)=TvalV(end);
+    end
+
+    if iter~=parts
+        disp("STOP! Increase iterations for MCMC small solver");
+        break;
     end
 
     for k=1:parts
