@@ -26,7 +26,7 @@ for i = 1:1
     digital_backup =0;
 
 
-    [file,Clauses,var,nc]= k_sat_read_cnf(cnffile,cnffile_new,scheme);
+    [file,Clauses,var,nc,k_sat,varo]= k_sat_read_cnf(cnffile,cnffile_new,scheme);
     [CMat]=generate_cmat(Clauses,var,nc);
     [A,S]=satgraph(CMat,var);
 
@@ -66,7 +66,7 @@ for i = 1:1
         % Set to 1 if we need to run Solver Algorithm after some iterations 
         if digital_backup ==1
 
-            [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses,cnffile);
+            [X_final,sat_time,flip_time,total_time,MCMC_time]=chip_solver_mix(K,node_set,Clause_set,Clause_inter,clause_comm_nodes,S,Clauses,cnffile,k_sat);
 
             fprintf("The SAT solution is : \n");
             disp(X_final');
