@@ -211,12 +211,17 @@ while(vtmpb~=0)
             end
         end
         flip_time(c)=toc;
-        [X,time_to_sat] = MCMC_SAT(CMat,var,C,K1);
-        tic;
-        v = compute_vars(X,S,varo,k_sat,Clauses);
-        v(1:length(X)) = X;
-        X_final=v';
-        flip_time(c)=flip_time(c)+toc+time_to_sat;
+        [X,time_to_sat,i] = MCMC_SAT(CMat,var,C,K1);
+        if i = K1
+            disp("STOP! Increase iterations for MCMC small solver");
+            break;
+        else
+            tic;
+            v = compute_vars(X,S,varo,k_sat,Clauses);
+            v(1:length(X)) = X;
+            X_final=v';
+            flip_time(c)=flip_time(c)+toc+time_to_sat;
+        end
     end
     sat_time(c) = max(time);
     total_time(c) = sat_time(c)+flip_time(c);
