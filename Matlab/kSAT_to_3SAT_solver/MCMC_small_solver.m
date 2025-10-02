@@ -18,7 +18,7 @@
 % TvalV - Time to reach SAT solution
 
 
-function [X,TvalV] = MCMC_small_solver(N,K,VC,small_eps,X_final,node_set,Clause_set,p)
+function [X,TvalV,iter] = MCMC_small_solver(N,K,VC,small_eps,X_final,node_set,Clause_set,p)
 
 N=size(node_set{p},2);
 X_final1=zeros(N,1);
@@ -60,6 +60,7 @@ for i=2:K+1
     end
     % Termination condition when all rates are 0
     if vtmp==0
+        iter=1;
         break;
     end
     QV(i,1:N)=q;
