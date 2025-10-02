@@ -12,7 +12,7 @@
 % NC - The number of Clauses in the final problem
 % Clauses -  A matrix (NC by 3) storing the Clauses for easy calculation   
 
-function [file,Clauses,var,NC]= k_sat_read_cnf(path_to_old_cnf,path_to_new_cnf,scheme)
+function [file,Clauses,var,NC,k_sat,varo]= k_sat_read_cnf(path_to_old_cnf,path_to_new_cnf,scheme)
     
     NC=0; % The number of clauses
     m=3; % Define matrix column size to convert to 3-SAT problem
