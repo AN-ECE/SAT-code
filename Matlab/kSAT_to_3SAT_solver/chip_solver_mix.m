@@ -213,7 +213,7 @@ while(vtmpb~=0)
         flip_time(c)=toc;
         [X,time_to_sat,i] = MCMC_SAT(CMat,var,C,K1);
         if i = K1
-            disp("STOP! Increase iterations for MCMC small solver");
+            disp("STOP! Increase iterations for MCMC SAT");
             break;
         else
             tic;
