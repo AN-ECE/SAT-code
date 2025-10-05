@@ -80,13 +80,13 @@ while(vtmpb~=0)
     parfor p =1:parts
 
         [X,TvalV,it] = MCMC_small_solver(S,K,VC,small_eps,X_final,node_set,Clause_set,p);
-        iter = iter+it;
+        iter{p} =it;
 
         X_sat{p} = X;
         time(p)=TvalV(end);
     end
 
-    if iter~=parts
+    if sum(cell2mat(iter))~=parts
         disp("STOP! Increase iterations for MCMC small solver");
         break;
     end
