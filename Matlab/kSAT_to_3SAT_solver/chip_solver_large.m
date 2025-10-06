@@ -71,7 +71,7 @@ unsatis_arr=[0,0,0,0,0,0,0,0,0];
 flip_node_arr=cell(1,10);
 X_arr={};
 
-iter =0;
+iter ={};
 
 % Simulating for K jumps
 while(vtmpb~=0)
