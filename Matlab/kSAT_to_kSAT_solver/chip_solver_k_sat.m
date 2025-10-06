@@ -18,11 +18,7 @@
 % the larger problem
 
 
-
-cnffile = '';
-
-scheme =1;
-cnffile_new='';
+function [X_final,sat_time,flip_time,total_time]= chip_solver_k_sat(cnffile,cnffile_new,scheme)
 
 [~,~,~,~,k_sat,~]= k_sat_read_cnf(cnffile,cnffile_new,scheme);
 [Clauses_k,var_k,C_k]= read_cnf(cnffile,k_sat);
@@ -245,7 +241,4 @@ while(vtmpb~=0)
 
 end
 
-
-fprintf("The SAT solution is : \n");
-disp(X_final');
-% end
+end

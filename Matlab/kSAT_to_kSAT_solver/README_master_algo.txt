@@ -6,11 +6,7 @@ Input Parameters
 The function takes the following inputs:
 •	cnffile (string): Path to the k-SAT CNF/DIMACS file (Line 20).
 •	cnffile_new (string, optional): Path to save the 3-SAT reduced CNF file if needed. Default is an empty string ('') (Line 23).
-•	chip_size (integer): Size of each partition (Line 25).
-•	digital_backup (integer, optional): (Line 26)
-	⁃ Set to 1 to run the Solver Algorithm on the k-SAT problem after a certain number of iterations .
-	⁃ Usually set to 1 when the 3-SAT reduced problem has more than 4000 variables.
-	⁃ Default value: 0.
+
 
 Output
 The function displays the following outputs:
